@@ -1,6 +1,6 @@
-String aux;
+String aux,ind;
 String shp,sht;
-int inc = 0;    
+int inc = 0, ot = 0;    
 
 String text,pat;   // String texto y patron
 int n,m;           // Tamaños del texto y patron respectivamente
@@ -67,10 +67,10 @@ void setup(){
   background(0);
   size(1600,550); 
   //size(1000,550);
-  //text = "111100001101110011101111";
-  //pat = "111";
-  text = "ababababaaaab";
-  pat = "aba";
+  text = "111100001101110011101111";
+  pat = "111";
+  //text = "ababababaaaab";
+  //pat = "aba";
   //text = "May the force be with you";
   //pat = "force";
   //text = "C3-P0-4T-R2-D4-R2-D2";
@@ -91,9 +91,13 @@ void draw(){
   
   textSize(50);
   textAlign(CENTER);
-  text("POLYNOMIAL HASH :D",width/2,100);
+  text("POLYNOMIAL HASH :D",width/2,70);
   
-  // PAT Y TEXT
+  // PAT Y TEXT 
+  textSize(25);
+  text("Indices ",120,130);
+  for(int i=0;i<n;i++){ text(i,300+i*50,130); }
+  textSize(50);
   text("Text =",120,200);
   for(int i=0;i<n;i++){ text(text.charAt(i),300+i*50,200); }
   text(" Pat  =",120,300);
@@ -111,6 +115,7 @@ void draw(){
   for(int i=0;i<m;i++){ shp+=pat.charAt(i)+" * "+dig+"^"+(i+inc)+(i<m-1?" + ":"");  } //,360+i*220,500); }
   sht+=" ) % 997 = " + calcVal(text,inc,inc+m,0); 
   shp+=" ) % 997 = " + calcVal(pat,0,m,inc);
+
   text(sht,width/2,400);
   text(shp,width/2,500);
 
